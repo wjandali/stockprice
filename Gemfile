@@ -11,6 +11,8 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'httparty'
+
 group :development, :test do
   gem 'jasmine'
   gem 'capybara-webkit'
@@ -21,4 +23,6 @@ end
 
 group :test do
   gem 'capybara', '~> 2.4'
+  gem 'vcr'
+  gem 'fakeweb'
 end

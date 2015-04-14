@@ -11,6 +11,7 @@ var Home = {
       if (!symbol) { return; }
       if (context.queried[symbol]) {
         stockprices = context.queried[symbol];
+        context.draw(stockprices, symbol);
       } else {
         $.ajax({
           url: '/data',
@@ -19,10 +20,10 @@ var Home = {
           success: function (data, textStatus, jqXHR) {
             stockprices = data.stockprices;
             context.queried[symbol] = stockprices;
+            context.draw(stockprices, symbol);
           }
         });
       }
-      context.draw(stockprices, symbol);
     });
   },
 

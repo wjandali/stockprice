@@ -2,6 +2,12 @@
   <div class="header">
     StockChart
   </div>
+  <form action="create" method="post" id="form">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <input name="name" type="text" value="Insert Stock Name">
+    <input name="symbol" type="text" value="Ticker">
+    <input type="submit" value="Create">
+  </form>
   <div class="chart-container">
     <div class="selection-container">
       <select class="selection">
@@ -12,7 +18,7 @@
       </select>
     </div>
     <div class="chart">
-      <canvas id="chart" width="400" height="400"></canvas>
+      <canvas id="chart" width="1000" height="600"></canvas>
     </div>
   </div>
 </div>

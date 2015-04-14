@@ -38,6 +38,29 @@ RSpec.describe Stockprice, type: :model do
     end
   end
 
+  describe '.get_for_symbol' do
+    describe 'when the data is not up to date (based on simplified assumption the latest day is over a day old)', :vcr do 
+      before do
+        Stockprice.destroy_all
+        stockprice = Stockprice.create(date: DateTime.new(2015,3,1), price: 200.0, symbol: "GOOG", name: "Google")
+        stockprice.update_attributes(updated_at: 30.days.ago)
+        Stockprice.get_for_symbol("GOOG")
+      end
+
+      it "should create the records (by pinging the API we're using)" do
+        expect(Stockprice.where(symbol: "GOOG").length).to be >= 15 # this number assumes a bit about the dates and table rows
+      end
+
+      it "should return the records" do
+        Stockprice.get_for_symbol("GOOG").length.should be >= 15
+      end
+
+
+    end
+
+    describe 'when adequate data is present' do
+    end
+  end
 
   describe '.update_all!' do
   end
