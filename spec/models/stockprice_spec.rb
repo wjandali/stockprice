@@ -39,7 +39,7 @@ RSpec.describe Stockprice, type: :model do
   end
 
   describe '.get_for_symbol' do
-    describe 'when the data is not up to date (based on simplified assumption the latest day is over a day old)', :vcr do 
+    describe 'when the data is not up to date (based on simplified assumption the latest day is over a day old)' do 
       before do
         Stockprice.destroy_all
         stockprice = Stockprice.create(date: DateTime.new(2015,3,1), price: 200.0, symbol: "GOOG", name: "Google")
