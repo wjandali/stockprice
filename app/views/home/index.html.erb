@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="header">
+    StockChart
+  </div>
+  <div class="chart-container">
+    <div class="selection-container">
+      <select class="selection">
+        <option value=""></option>
+        <% @stockprices.each do |stockprice| %>
+          <option value="<%= stockprice.symbol %>"><%= stockprice.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="chart">
+    </div>
+  </div>
+</div>
